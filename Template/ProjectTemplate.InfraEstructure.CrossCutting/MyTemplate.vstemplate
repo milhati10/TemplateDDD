@@ -1,0 +1,31 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>ProjectTemplate.InfraEstructure.CrossCutting</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>ProjectTemplate.InfraEstructure.CrossCutting</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="ProjectTemplate.InfraEstructure.CrossCutting.csproj" File="ProjectTemplate.InfraEstructure.CrossCutting.csproj" ReplaceParameters="true">
+      <Folder Name="InversionOfControl" TargetFolderName="InversionOfControl">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ContextDependency.cs">ContextDependency.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="RepositoryDependency.cs">RepositoryDependency.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ServiceDependency.cs">ServiceDependency.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Notifications" TargetFolderName="Notifications">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Error.cs">Error.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="NotificationContext.cs">NotificationContext.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="NotificationFilter.cs">NotificationFilter.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

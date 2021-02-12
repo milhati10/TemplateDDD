@@ -1,0 +1,69 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
+  <TemplateData>
+    <Name>ProjectTemplate</Name>
+    <Description>Arquitetura de projeto utilizando conceito DDD</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType></ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>false</CreateNewFolder>
+    <DefaultName>ProjectTemplate</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectCollection>
+      <SolutionFolder Name="Application">
+        <ProjectTemplateLink ProjectName="$projectname$.Application" CopyParameters="true">
+            ProjectTemplate.Api\MyTemplate.vstemplate
+        </ProjectTemplateLink>
+      </SolutionFolder>
+
+      <SolutionFolder Name="Domain">
+        <ProjectTemplateLink ProjectName="$projectname$.Domain" CopyParameters="true">
+            ProjectTemplate.Domain\MyTemplate.vstemplate
+        </ProjectTemplateLink>
+      </SolutionFolder>
+
+      <SolutionFolder Name="InfraEstructure">
+
+        <SolutionFolder Name="CrossCutting">
+          <ProjectTemplateLink ProjectName="$projectname$.InfraEstructure.CrossCutting" CopyParameters="true">
+            ProjectTemplate.InfraEstructure.CrossCutting\MyTemplate.vstemplate
+          </ProjectTemplateLink>  
+        </SolutionFolder>
+
+        <SolutionFolder Name="Data">
+          <ProjectTemplateLink ProjectName="$projectname$.InfraEstructure.Data" CopyParameters="true">
+            ProjectTemplate.InfraEstructure.Data\MyTemplate.vstemplate
+          </ProjectTemplateLink>  
+        </SolutionFolder>
+
+      </SolutionFolder>
+
+      <SolutionFolder Name="Services">
+         <ProjectTemplateLink ProjectName="$projectname$.Interface" CopyParameters="true">
+            ProjectTemplate.Interface\MyTemplate.vstemplate
+          </ProjectTemplateLink>  
+          <ProjectTemplateLink ProjectName="$projectname$.Service" CopyParameters="true">
+            ProjectTemplate.Service\MyTemplate.vstemplate
+          </ProjectTemplateLink>  
+      </SolutionFolder>
+
+      <SolutionFolder Name="Shared">
+        <ProjectTemplateLink ProjectName="$projectname$.Shared" CopyParameters="true">
+          ProjectTemplate.Shared\MyTemplate.vstemplate
+        </ProjectTemplateLink>  
+      </SolutionFolder>
+
+      <SolutionFolder Name="Tests">
+        <ProjectTemplateLink ProjectName="$projectname$.Tests" CopyParameters="true">
+          ProjectTemplate.UnitTest\MyTemplate.vstemplate
+        </ProjectTemplateLink>  
+      </SolutionFolder>
+      
+    </ProjectCollection>
+  </TemplateContent>
+</VSTemplate>

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\$ext_projectname$.Domain\$ext_projectname$.Domain.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.InfraEstructure.Data\$ext_projectname$.InfraEstructure.Data.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Interface\$ext_projectname$.Interface.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+
+</Project>
