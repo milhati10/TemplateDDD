@@ -30,50 +30,45 @@ Após colar o .zip na pasta é só abrir o Visual Studio 2019 e pedir para criar
 
 ### **1.Application**
 
-Apresentação do projeto, no caso estou utilizando ASP.NET API, mas poderia ser ASP.NET MVC por exemplo.
-Esta camada é responsavel por ser a porta de entrada das suas requisições.
+Como todo projeto, precisamos de uma porta de entrada das nossas requisições e para esse template, estou utilizando o ASP.NET API, mas poderia também estar utilizando ASP.NET MVC. Lembrando que essa alteração implica na mudança da forma que desenvolvemos a injeção de Dependencia.
 
 ### **2.Domain**
 
-Nesta camada é onde se concentra/define toda sua regra de negocio, por exemplo, é nela onde voce fala que um "Pedido" tem varios "Itens do Pedido". A camada de dominio é a base para o conceito DDD (Domain Driven Design).
+Para este template, o projeto de Domain é responsavel por gerenciar toda a regra de negocio da aplicação, por exemplo, é  nesta etapa do projeto que definimos que o _Pedido_ tem varios _Itens do Pedido_. A camada de dominio é a base para todo o conceito DDD (Domain Driven Design).
 
-Aqui também definimos as interfaces dos Repositorios, definidindo assim quais regras para acessar a base de dados, por exemplo, "Buscar Cliente por ID"(GetCustomerByID), e por ai vai... já vi também alguns casos que as interfaces de Serviço são definidas aqui, mas eu prefiro deixar separado em outra camada, apenas por organização.
+Também no projeto de Domain foi definido as interfaces dos _Repositorios_, assim quaisquer regra para acessar a base de dados será implementada neste projeto.
 
 ### **3.InfraEstructure**
 
-A camada de Infraestrutura eu separo em outras duas camadas, no template esta separado em _CrossCutting_ e _Data_.
+O projeto de Infraestrutura para este template tem como responsabilidade gerenciar o acesso ao banco de dados e também a Injeção de Dependencia. Para isso foi segregado em outros dois projetos _CrossCutting_ e _Data_.
 
 - **CrossCutting**
 
-    Aqui é onde eu implemento a injeção de Dependencia dos repositorios, Services e também do Contexto utilizado, nesse template, esta comentado as linhas para utilizar banco de dados Sql Server como contexto.
+    Nesta parte do template foi implementado a Injeção de Dependência dos repositórios, Services e também do Contextoque foi utilizado no template. Uma observação a ser feita, nesta parte do projeto as linhas para utilização da Banco de Dados SQL Server como contexto está comentado.
 
-    Existem alguns exemplos onde a camada de CrossCutting, é local para incluir regra de segurança da aplicação, Cache entre outros... eu prefiro deixar isso para a camada Shared para deixar a camada de Application com menos responsabilidades possiveis.
+    Existem alguns exemplos que a camada de CrossCutting, é responsavel por incluir toda regra de segurança da aplicação, Cache e entre outros. Para este template foi incluido o projeto Shared, assim deixando o projeto de Application com menos responsabilidades possiveis.
 
 - **Data**
 
     Tem como responsabilidade a implementação do Contexto utilizado, por exemplo, se voce utiliza Entity Framework, é nesta camada onde seria implementado o _Unit of Work_, onde seria implementado os DbSet e toda configuração o EF.
 
-    Aqui também é onde implementamos as interfaces do Repositorio, que foram definidas lá na camada de _Domain_.
-
-A Infraestrutura é o lugar onde realmente trabalhamos com o banco de dados escolhido, se caso for necessario a sua aplicação alterar a base de dados utilizada. Daqui começa os trabalhos kkk
+    As interfaces dos repositorios que foram declaradas no projeto Domain, tem a sua implementação realizada no projeto _Data_.
 
 ### **3.Services**
 
-A responsabilidade da camada de Services é 'traduzir' as requisições da Api para os Repositorios, por exemplo, mapear uma DTO (Data Transfer Object) para uma entidade e assim executar um insert pelo Repositorio. Eu tenho costume de separar em dois projetos, _Interfaces_ e _Services_.
+A responsabilidade da camada de Services é 'traduzir' as requisições da Api para os Repositorios, por exemplo, mapear um _DTO (Data Transfer Object)_ para uma entidade e assim executar um insert pelo Repositorio. Este template está separado em dois projetos, _Interfaces_ e _Services_ para uma melhor organização.
 
 - **Interface**
 
-    É aqui onde implemento as DTO's, interfaces dos Services e implementação do AutoMapper. Nesse template eu coloquei apenas um exemplo do Mapper de _Customer_ para _CustomerDTO_.
+    No template, este projeto é utilizado para a implementação das classes de DTO, responsaveis por receber as informações enviadas pela camada de _Application_, e também por definir as interfaces que serão utilizadas no projeto de Service. Para realizar o mapeamento entre uma DTO e uma Entidade, utilizei o componente AutoMapper.
 
 - **Services**
 
-    Implementação das interfaces dos Services, a responsabilidade do Services é realizar as validações necessarias para que a request que chegou da API por exemplo, chegue na camada de _InfraEstructure.Data_ já consolidada para executar na base.
+    Neste projeto, contém as implementações das interfaces dos Services e tem como responsabilidade realizar as validações necessarias para que a requisição que chegou via API por exemplo, seja trafegada até os devidos repositorios.
 
 ### **4.Shared**
 
-A _Shared_ é onde eu impleto toda os metodos compartilhados (ah vá...) com as outras camadas do projeto, por exemplo, nesse template eu implementei  a classe abstrata do _Value Objects_, mas poderia ter colocado também os metodos de Extensão.
+O projeto _Shared_ implementa toda regra que precisa ser compartilhada com as outras camadas do projeto, por exemplo, a classe abstrata do _Value Objects_. Também poderia estar implementado regras de segurança e/ou regras de validações.
 
 ### **5.Tests**
-Aqui é onde voce garante que sua aplicação funcione sem precisar ficar testando ela utilizando o navegador, no futuro quero deixar alguns exemplo de testes unitario aqui.
-
-
+Este projeto tem como responsabilidade criar e executar todos os tipos de testes, no primeiro momento, apenas com um exemplo de testes unitario, futuramente será implementando alguns exemplos de testes.
