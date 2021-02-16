@@ -2,9 +2,7 @@
 
 Fala pessoal, tudo certo ?
 
-Criei esse template com o desenvolvimento de Arquitetura utilizando "_Conceito DDD_" e alguns outros Designer Patterns.
-
-Abaixo os designer pattners e alguns links para estudo.
+Nesse projeto, foi implementado um template para utilização no Visual Studio 2019, utilizando o "_Conceito DDD_" e alguns outros Designer Patterns.
 
 # Designer Patterns e Conceitos (Links)
 1. Inversão de Controle (IoC) - [O padrão de inversão de controle](https://imasters.com.br/dotnet/o-padrao-de-inversao-de-controle-ioc)
