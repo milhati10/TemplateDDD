@@ -1,4 +1,4 @@
-# Template de Projeto DDD
+# Template de Projeto DDD (Domain Driven Design)
 
 Fala pessoal, tudo certo ?
 
